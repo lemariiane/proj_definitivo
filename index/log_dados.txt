@@ -1,0 +1,10 @@
+Array
+(
+    [id_agendamento] => 65
+    [ed_ficha] => 49
+    [ed_nomepac] => Letícia Mariane Costa de Andrade
+    [ed_email] => lehmariane12@gmail.com
+    [ed_start] => 2025-06-06T07:00
+    [ed_end] => 2025-06-06T11:00
+    [ed_id_medico] => 3
+)
