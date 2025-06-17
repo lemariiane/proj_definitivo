@@ -56,9 +56,9 @@ foreach ($bloqueios as $bl) {
         'id' => 'bloqueio_' . $bl['id'],
         'title' => $bl['obs'] ?? 'Bloqueado',
         'start' => $bl['start'],
-        'end' => $bl['end'],  // Confirme se o end está no dia seguinte!
+        'end' => $bl['end'],  
         'tipo' => 'bloqueio',
-        'display' => 'background',   // ESSENCIAL
+        'display' => 'background',   
         'color' => 'red',           
         'id_medico' => $id_medico
     ];

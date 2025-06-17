@@ -6,12 +6,11 @@
     $start = $_POST['start'];  
     $end = $_POST['end'];
    
-
         
     $ClassAgendamentoDAO = new ClassAgendamentoDAO();
 
     $novoAgendamento = new ClassAgendamento();
-     $novoAgendamento->setFicha($ficha); 
+    $novoAgendamento->setFicha($ficha); 
     $novoAgendamento->setStart($start);
     $novoAgendamento->setEnd($end);
 

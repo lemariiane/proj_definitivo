@@ -23,11 +23,11 @@
         }
         .menu {
             background-color: black;
-            width: 200px; /* Largura fixa para o menu */
-            height: 100vh; /* Altura total da viewport */
+            width: 200px;
+            height: 100vh; 
             display: flex;
             flex-direction: column;
-            padding-top: 20px; /* Espaço no topo */
+            padding-top: 20px; 
         }
         .menu a {
             display: block;
@@ -35,7 +35,7 @@
             text-align: center;
             padding: 14px;
             text-decoration: none;
-            margin: 4px 0; /* Espaço entre os links */
+            margin: 4px 0; 
         }
         .menu a:hover {
             background-color: #ddd;
@@ -49,7 +49,7 @@
             color: red;
         }
         .signup-link {
-            margin: 4px 0; /* Espaço entre os links */
+            margin: 4px 0; 
         }
         .menu .user-info {
             color: white;

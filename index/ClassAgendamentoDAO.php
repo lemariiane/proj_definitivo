@@ -9,6 +9,7 @@ class ClassAgendamentoDAO {
         $this->pdo = Conexao::getInstance();
     }
 
+    //método cadastrar agendamento
     public function cadastrarAgendamento($novoAgendamento) {
         try {
             $sql = "INSERT INTO agendamento (ficha, start, end, id_medico)
@@ -31,8 +32,20 @@ class ClassAgendamentoDAO {
         header("Location: calendario.php");
         exit;
     }
-    
 
+    //método verifica se os horários não coincidem
+    public function verificarConflito($start, $end, $id_medico) {
+    $sql = "SELECT * FROM agendamento
+            WHERE id_medico = ?
+            AND (? < end AND ? > start)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([$id_medico, $start, $end]);
+    return $stmt->fetchAll();
+}
+
+
+    
+    //método excluir agendamento
    public function excluirAgendamento($id_agendamento) {
         try {
             $sql = "DELETE FROM agendamento WHERE id_agendamento = :id_agendamento";
@@ -40,21 +53,18 @@ class ClassAgendamentoDAO {
             $stmt->bindParam(':id_agendamento', $id_agendamento, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Set session messages - optional if using AJAX for all feedback
-            // session_start(); // Make sure session is started if you use this line
             $_SESSION['mensagem'] = "✅ Agendamento excluído com sucesso!";
             $_SESSION['status'] = "sucesso";
             return true;
 
         } catch (PDOException $erro) {
-            // session_start(); // Make sure session is started if you use this line
             $_SESSION['mensagem'] = "❌ Erro ao excluir! " . $erro->getMessage();
             $_SESSION['status'] = "erro";
             return false;
         }
     }
 
-
+    //método buscar agendamento
     public function buscarAgendamentoPorId($id) {
         try {
             $sql = "SELECT id_agendamento, start, end, id_medico, ficha FROM agendamento WHERE id_agendamento = :id_agendamento"; 

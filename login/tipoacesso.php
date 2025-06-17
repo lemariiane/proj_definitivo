@@ -98,7 +98,7 @@
 
         <script>
             document.getElementById('loginForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // evita submit padrão
+  e.preventDefault(); 
 
   const tipo = document.getElementById('tipoacesso').value;
 

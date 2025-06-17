@@ -5,7 +5,6 @@
 
     inserir($conexao, $numcar, $senha);
   
-
     function inserir($conexao, $numcar, $senha) {
         $sql = "INSERT INTO logar (numcar,senha)
                 values('$numcar','$senha')";

@@ -121,6 +121,7 @@
 </main>
     <script>
         
+        //API CEP
  function buscaCep(){
 let cep= document.getElementById('cep').value;
 if(cep!==""){

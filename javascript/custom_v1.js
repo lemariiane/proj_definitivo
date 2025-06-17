@@ -81,12 +81,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            function converterData(data) {
+    const dataObj = new Date(data);
+    const ano = dataObj.getFullYear();
+    const mes = String(dataObj.getMonth() + 1).padStart(2, '0');
+    const dia = String(dataObj.getDate()).padStart(2, '0');
+    const hora = String(dataObj.getHours()).padStart(2, '0');
+    const minuto = String(dataObj.getMinutes()).padStart(2, '0');
+    return `${ano}-${mes}-${dia} ${hora}:${minuto}`;
+}
+
+
             // Lógica existente para agendamentos
             document.getElementById('visualizar_ficha').textContent = info.event.extendedProps.ficha;
             document.getElementById('nomepac').textContent = info.event.title;
             document.getElementById('email').textContent = info.event.extendedProps.email;
-            document.getElementById('visualizar_start').textContent = info.event.startStr;
-            document.getElementById('visualizar_end').textContent = info.event.endStr;
+            document.getElementById('visualizar_start').textContent = converterData(info.event.startStr);
+            document.getElementById('visualizar_end').textContent = converterData(info.event.endStr);
+
 
             const visualizarModal = new bootstrap.Modal(document.getElementById('visualizarModal'));
             visualizarModal.show();
@@ -99,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function abrirModalBloqueioParaCriacao(dateStr) {
         // Limpa e prepara os campos
         bloqueioIdInput.value = ''; // Garante que o ID esteja vazio para novo bloqueio
-        bloqueioStartInput.value = dateStr + 'T00:00'; // Define a data clicada e hora inicial (meia-noite)
-        bloqueioEndInput.value = dateStr + 'T23:59'; // Define a data clicada e hora final (quase meia-noite)
+        bloqueioStartInput.value = dateStr + ' 00:00'; // Define a data clicada e hora inicial (meia-noite)
+        bloqueioEndInput.value = dateStr + ' 23:59'; // Define a data clicada e hora final (quase meia-noite)
         bloqueioObsInput.value = '';
 
         // Controla a visibilidade dos títulos
@@ -203,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (confirm('Tem certeza que deseja excluir este bloqueio?')) {
             fetch('excluir_bloqueio.php', { // Novo script PHP para exclusão
-                method: 'POST', // Ou 'DELETE' se seu backend suportar e você configurar
+                method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id })
             })

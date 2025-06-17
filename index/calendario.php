@@ -7,7 +7,7 @@ $classe = "";
 if (isset($_SESSION['mensagem'])) {
     $mensagem = $_SESSION['mensagem'];
     $classe = $_SESSION['status'] === "sucesso" ? "mensagem-sucesso" : "mensagem-erro";
-    unset($_SESSION['mensagem'], $_SESSION['status']); // limpa após exibir
+    unset($_SESSION['mensagem'], $_SESSION['status']); // limpa 
 }
 ?>
 
@@ -18,7 +18,7 @@ if (isset($_GET['medico'])) {
     $_SESSION['id_medico'] = $_GET['medico'];
 }
 
-// Usa o valor da sessão, se estiver definido
+//valor da sessão
 $medicoId = isset($_SESSION['id_medico']) ? $_SESSION['id_medico'] : null;
 
 function getNomeMedico($id) {
@@ -166,12 +166,15 @@ $nomeMedico = getNomeMedico($medicoId);
         <dd class="col-sm-9" id="visualizar_medico"></dd>
       </dl>
 
-      <button id="btn_editar" type="submit">Alterar</button>
+      <button id="btn_editar" type="submit" class="btn btn-primary me-2">
+        <i class="bi bi-pencil-square me-1"></i> Alterar
+      </button>
       <button type="button" class="btn btn-danger" id="btnExcluirAgendamento" data-agendamento-id="<?= $agendamento['id_agendamento']; ?>">Excluir Agendamento</button>
 
       </div>
 
 </div>
+    <!--Modal editar -->
       <div id="editarAgendamento" style="display:none;">
 
       <form id="formEd" method="POST">
@@ -180,19 +183,19 @@ $nomeMedico = getNomeMedico($medicoId);
             
 
         <div class="form-group">
-            <input type="text" class="ficha" id="ed_ficha" name="ficha" required>
+            <input type="text" class="ficha" id="ed_ficha" name="ficha" required readonly>
             <label for="ed_ficha">Número da ficha</label>
             <div class="message"></div>
         </div>
 
         <div class="form-group">
-        <input type="text" class="nomepac" id="ed_nomepac" name="ed_nomepac" required>
+        <input type="text" class="nomepac" id="ed_nomepac" name="ed_nomepac" required readonly>
         <label for="ed_nome">Nome completo</label>
         <div class="message"></div>
     </div>
     
     <div class="form-group">
-        <input type="email" class="email" id="ed_email" name="ed_email" required>
+        <input type="email" class="email" id="ed_email" name="ed_email" required readonly>
         <label for="ed_email">Email</label>
         <div class="message"></div>
     </div>

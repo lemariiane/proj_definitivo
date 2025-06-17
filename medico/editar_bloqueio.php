@@ -1,19 +1,17 @@
 <?php
 header('Content-Type: application/json');
 
-// Inclua a conexão e a classe DAO
 require_once '../conexao/conexao.php'; 
 require_once 'ClassBloqueioDAO.php';   
 
-// Lê o corpo da requisição e tenta decodificar como JSON
+
 $input_json = file_get_contents('php://input');
 $dados = json_decode($input_json, true);
 
-// Adicione logs para depuração no servidor (checar error.log do Apache/Nginx)
 error_log("[DEBUG PHP] Input JSON recebido: " . $input_json);
 error_log("[DEBUG PHP] Dados decodificados: " . print_r($dados, true));
 
-// Verifica se os dados foram decodificados corretamente e se contêm todos os campos esperados
+//todos os dados inseridos
 if ($dados &&
     isset($dados['id']) &&
     isset($dados['start']) &&
@@ -22,7 +20,6 @@ if ($dados &&
 ) {
     $dao = new ClassBloqueioDAO();
 
-    // Atribui os valores do array $dados às variáveis
     $id_bloqueio = $dados['id'];
     $start_bloqueio = $dados['start'];
     $end_bloqueio = $dados['end'];
@@ -33,7 +30,7 @@ if ($dados &&
     // Retorna a resposta JSON
     echo json_encode([
         'sucesso' => $sucesso,
-        'id' => $id_bloqueio, // Retorne o ID para que o JS possa atualizar o evento no calendário
+        'id' => $id_bloqueio, 
         'start' => $start_bloqueio,
         'end' => $end_bloqueio,
         'obs' => $obs_bloqueio

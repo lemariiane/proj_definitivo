@@ -17,25 +17,29 @@ $end = $_POST['end'] ?? '';
 $id_medico = $_POST['id_medico'] ?? '';
 $ficha = $_POST['ficha'] ?? '';
 
-header('Content-Type: application/json');
-
-
 try {
+    // Atualiza apenas data de início e fim
     $sql = "UPDATE agendamento 
-        SET start = :start, end = :end 
-        WHERE id_agendamento = :id_agendamento";
-
+            SET start = :start, end = :end 
+            WHERE id_agendamento = :id_agendamento";
 
     $stmt = $pdo->prepare($sql); 
-$stmt->bindValue(':start', $start);
-$stmt->bindValue(':end', $end);
-$stmt->bindValue(':id_agendamento', $id_agendamento);
-
+    $stmt->bindValue(':start', $start);
+    $stmt->bindValue(':end', $end);
+    $stmt->bindValue(':id_agendamento', $id_agendamento);
 
     if ($stmt->execute()) {
+        // Busca nome e email do paciente pela ficha
+        $stmtPaciente = $pdo->prepare("SELECT nomepac, email FROM cadastro_paciente WHERE ficha = :ficha");
+        $stmtPaciente->bindValue(':ficha', $ficha);
+        $stmtPaciente->execute();
+        $paciente = $stmtPaciente->fetch(PDO::FETCH_ASSOC);
+
         $smt = [
             'id_agendamento' => $id_agendamento,
             'ficha' => $ficha,
+            'nomepac' => $paciente['nomepac'] ?? '',
+            'email' => $paciente['email'] ?? '',
             'id_medico' => $id_medico,
             'start' => $start,
             'end' => $end
@@ -53,3 +57,4 @@ $stmt->bindValue(':id_agendamento', $id_agendamento);
     echo json_encode(['erro' => 'Erro no banco: ' . $e->getMessage()]);
     exit;
 }
+?>

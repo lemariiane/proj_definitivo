@@ -7,7 +7,7 @@
         navMenu.classList.toggle('active');
     });
 
-    // Função de máscara (ex: CPF)
+    // Função de máscara 
     function mascara(i) {
         let v = i.value;
 

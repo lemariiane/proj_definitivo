@@ -16,7 +16,7 @@ if (isset($_GET['ficha']) && is_numeric($_GET['ficha'])) {
     // Consulta ao banco de dados
     $sql = "SELECT nomepac, email FROM cadastro_paciente WHERE ficha = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $ficha);  // Alterado de "s" para "i" (inteiro)
+    $stmt->bind_param("i", $ficha);  
     $stmt->execute();
     $result = $stmt->get_result();
 

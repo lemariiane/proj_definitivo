@@ -6,6 +6,7 @@
         private $end;
         private $id_medico;
         
+        //set
           
         public function setId_agendamento($id_agendamento) {
             $this->id_agendamento = $id_agendamento;

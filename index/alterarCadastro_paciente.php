@@ -3,7 +3,6 @@ require_once "ClassCadastro_paciente.php";
 require_once '../conexao/conecta.php';
 require_once "ClassCadastro_pacienteDAO.php";
 
-// Substitua a recuperação dos dados via GET por POST
 $nomepac = isset($_POST['nomepac']) ? htmlspecialchars($_POST['nomepac'], ENT_QUOTES, 'UTF-8') : '';
 $cpfpac = isset($_POST['cpfpac']) ? htmlspecialchars($_POST['cpfpac'], ENT_QUOTES, 'UTF-8') : '';
 $datanasc = isset($_POST['datanasc']) ? htmlspecialchars($_POST['datanasc'], ENT_QUOTES, 'UTF-8') : '';

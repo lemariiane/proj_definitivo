@@ -1,6 +1,7 @@
 <?php require_once "../conexao/conexao.php";  ?>
 <?php
 class ClassCadastro_pacienteDAO {
+        //método cadastrar paciente
     public function cadastrarCadastro_paciente($novoCadastro_paciente) {
         try {
             $pdo = Conexao::getInstance();
@@ -35,6 +36,7 @@ class ClassCadastro_pacienteDAO {
         }
     }
 
+    //método pesquisar cadastro para o listar pacientes
     public function pesquisarCadastro_paciente ($cpf = null, $ficha = null) {
     try {
         $pdo = Conexao::getInstance();
@@ -64,6 +66,7 @@ class ClassCadastro_pacienteDAO {
     }
 }
 
+    //método listar pacientes 
     public function listarCadastro_paciente() {
         try {
             $pdo = Conexao::getInstance();
@@ -78,6 +81,7 @@ class ClassCadastro_pacienteDAO {
 
     }
 
+    //método alterar paciente
     public function alteraCadastro_paciente($novoCadastro_paciente) {
         try {
             $pdo = Conexao::getInstance();

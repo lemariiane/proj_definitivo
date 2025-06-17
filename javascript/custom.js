@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             document.getElementById("ed_id_agendamento").value = idAgendamento;
             document.getElementById("ed_ficha").value = info.event.extendedProps.ficha;
-            document.getElementById("ed_nomepac").value = info.event.title;
+            document.getElementById("ed_nomepac").value = info.event.nomepac;
             document.getElementById("ed_email").value = info.event.extendedProps.email;
             document.getElementById("ed_start").value = converterData(info.event.start);
             document.getElementById("ed_end").value = info.event.end !== null ? converterData(info.event.end) : converterData(info.event.start);
@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const agendamentoexiste = calendar.getEventById(smt['id_agendamento']);
                 if (agendamentoexiste) {
                     agendamentoexiste.setProp('title', smt['ficha']);
+                    agendamentoexiste.setProp('nomepac', smt['nomepac']);
                     agendamentoexiste.setStart(smt['start']);
                     agendamentoexiste.setEnd(smt['end']);
                 }

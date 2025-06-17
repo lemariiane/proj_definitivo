@@ -14,6 +14,8 @@
         private $numeropac;
         private $pagamento;
         private $ficha;
+
+        //set
         
         public function setNomepac($nomepac) {
             $this->nomepac = $nomepac;

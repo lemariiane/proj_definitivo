@@ -25,6 +25,16 @@ $end = $data['end'];
 $obs = $data['obs'];
 
 $bloqueioDAO = new ClassBloqueioDAO($conexao);
+// Verificar se já existem agendamentos no intervalo
+$sucesso = $bloqueioDAO->verificarAgendamentosEmDia($medicoId, $start, $end);
+
+if (!empty($sucesso)) {
+    http_response_code(409); // Conflito
+    echo json_encode(['erro' => 'Não é possível bloquear este dia: já existem agendamentos marcados.']);
+    exit;
+}
+
+// Inserir o bloqueio
 
 $sucesso = $bloqueioDAO->inserirBloqueio($medicoId, $start, $end, $obs);
 

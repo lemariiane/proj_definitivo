@@ -11,7 +11,7 @@ if (!medicoEstaLogado()) {
 $medicoId = medicoLogado();
 
 $dao = new ClassMedicoDAO($conexao);
-$agendamentos = $dao->buscarAgendamentosPorMedico($medicoId); // função no DAO de agendamentos
+$agendamentos = $dao->buscarAgendamentosPorMedico($medicoId); 
 
 function getNomeMedico($id) {
     $medicos = [
@@ -48,16 +48,15 @@ $nomeMedico = getNomeMedico($medicoId);
         #calendar {
             background-color: rgba(64, 105, 121, 0.41);
         }
-        /* Ajustes menores para formulários e modais para evitar conflitos com Bootstrap */
         form {
-            margin: 0; /* Bootstrap já cuida da margem, evite sobrepor */
-            box-shadow: none; /* Bootstrap já cuida da sombra */
-            background-color: transparent; /* Padrão, a cor de fundo virá do modal-content */
+            margin: 0; 
+            box-shadow: none; 
+            background-color: transparent; 
         }
         .modal-content {
             background-color: rgba(210, 224, 230, 0.99);
-            border-radius: 0.3rem; /* Padrão do Bootstrap */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Sombra mais sutil do Bootstrap */
+            border-radius: 0.3rem; 
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
         .mensagem-sucesso {
             background-color: rgba(156, 223, 172, 0.43);
@@ -74,9 +73,9 @@ $nomeMedico = getNomeMedico($medicoId);
         #mensagem-flash {
             transition: opacity 2s ease-out;
         }
-        /* Garante que datetime-local receba os estilos do form-control */
+
         input[type="datetime-local"].form-control {
-            /* Assegura que o estilo do Bootstrap seja aplicado */
+            
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             line-height: 1.5;
@@ -92,12 +91,14 @@ $nomeMedico = getNomeMedico($medicoId);
 
 <body>
 
-    <h2>Bem-vindo(a), <?= htmlspecialchars($nomeMedico) ?></h2>
-
-    <a href="../login/destroy.php" id="sair">Desconectar</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Bem-vindo(a), <?= htmlspecialchars($nomeMedico) ?></h2>
+    <a href="../login/destroy.php" id="sair" class="btn btn-outline-danger btn-sm">Desconectar</a>
+</div>
 
     <div id="calendar"></div>
-
+    
+    <!--Modal visualizar-->
     <div class="modal fade" id="visualizarModal" tabindex="-1" role="dialog" aria-labelledby="visualizarModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

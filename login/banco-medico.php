@@ -9,9 +9,9 @@ function buscaMedico($conexao, $id_medico, $senha) {
     $medico = mysqli_fetch_assoc($resultado);
 
     if ($medico && password_verify($senha, $medico['senha'])) {
-        return $medico; // Login correto
+        return $medico; // Login verificado
     }
 
-    return null; // Login incorreto
+    return null; 
 }
 ?>

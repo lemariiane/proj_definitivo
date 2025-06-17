@@ -36,10 +36,10 @@ foreach ($agendamentos as $ag) {
     ];
 }
 
-// Formatando bloqueios (com display de fundo e cor vermelha)
+// Formatando bloqueios
 foreach ($bloqueios as $bl) {
     $eventos[] = [
-        'id' => 'bloqueio_' . $bl['id'],  // prefixo para identificar
+        'id' => 'bloqueio_' . $bl['id'],  
         'title' => $bl['obs'] ?? 'Bloqueado',
         'start' => $bl['start'],
         'end' => $bl['end'],

@@ -18,7 +18,7 @@
 }
 
         main {
-            background-color: rgba(7, 14, 20, 0.514); /* Cor de fundo com opacidade */            
+            background-color: rgba(7, 14, 20, 0.514);
             display: flex;
             width: 100%;
             height: 100%;

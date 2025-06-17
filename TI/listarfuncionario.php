@@ -220,7 +220,7 @@ $medico = $dao->listarMedico(); // Para medico
                 <th>Ações</th>
             </tr>
         </thead><?php
-$medicos= $dao->listarMedico(); // agora a variável correta
+$medicos= $dao->listarMedico(); 
 ?>
 
 <tbody>
